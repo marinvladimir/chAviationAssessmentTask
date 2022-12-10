@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
-import { GlobalContext } from "../Context";
+import React, { useState, useRef, useEffect } from "react";
 import {
   DropDownContainer,
   DropDownOptions,
@@ -11,9 +10,8 @@ import {
   DropDownCheckBoxLabel,
 } from "../styles/UI";
 
-const DropDown = ({ options }) => {
+const DropDown = ({ options, selectedItem, setSelectedItem }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { selectedItem, setSelectedItem } = useContext(GlobalContext);
 
   const dropdownRef = useRef();
   const dropdownContentRef = useRef();
@@ -57,15 +55,22 @@ const DropDown = ({ options }) => {
       >
         <DropDownSelectButton
           id="select_btn"
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          role="combobox"
           data-testid="button"
+          tabIndex={0}
           isOpen={isOpen || selectedItem}
           onClick={(e) => handleSelectButtonClick(e)}
         >
-          <p data-testid="select_text">{selectedItem || "Filter title"}</p>
+          <p data-testid="select_text">
+            {selectedItem?.name || "Filter title"}
+          </p>
           {/* in this case, rotate is only used to transform "+" to "x" in case selected item is not null */}
           <DropDownIconContainer
             rotate={selectedItem !== null && !isOpen ? 1 : 0}
             id="icon_container"
+            aria-hidden="true"
             onClick={() => {
               if (selectedItem !== null && !isOpen) {
                 setSelectedItem(null);
@@ -82,23 +87,46 @@ const DropDown = ({ options }) => {
           isOpen={isOpen}
           data-testid="dropdown_options_wrapper"
           ref={dropdownContentRef}
+          aria-hidden={!isOpen}
         >
           {isOpen && (
-            <DropDownOptions>
+            <DropDownOptions
+              className="dropdown__list"
+              role="listbox"
+              tabindex="-1"
+              aria-hidden={!isOpen}
+            >
               {options?.map((item, key) => (
                 <DropDownOption
                   key={key}
+                  tabindex="-1"
+                  aria-hidden={!isOpen}
                   data-testid="dropdown_option"
-                  checked={selectedItem === item?.name}
+                  data-option={String(item?.name)}
+                  checked={selectedItem?.name === item?.name}
                   onClick={() => {
-                    setSelectedItem(item?.name);
+                    setSelectedItem(item);
                     setIsOpen(!isOpen);
                   }}
                 >
-                  <DropDownCheckBox checked={selectedItem === item?.name}>
-                    {selectedItem === item?.name ? "✓" : ""}
+                  {/* "checked" state must match key/value pair of the selectedItem state */}
+                  <DropDownCheckBox
+                    checked={
+                      selectedItem?.name === item?.name &&
+                      selectedItem?.key === item?.key
+                    }
+                  >
+                    {selectedItem?.name === item?.name &&
+                    selectedItem?.key === item?.key
+                      ? "✓"
+                      : ""}
                   </DropDownCheckBox>
-                  <DropDownCheckBoxLabel checked={selectedItem === item?.name}>
+                  <DropDownCheckBoxLabel
+                    checked={
+                      selectedItem?.name === item?.name &&
+                      selectedItem?.key === item?.key
+                    }
+                  >
                     {item?.name}
                   </DropDownCheckBoxLabel>
                 </DropDownOption>
