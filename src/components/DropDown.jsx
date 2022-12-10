@@ -76,9 +76,7 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
                 setSelectedItem(null);
               }
             }}
-            style={
-              !isOpen ? { background: "#ffebeb" } : { background: "white" }
-            }
+            isOpen={isOpen}
           >
             {!isOpen ? "+" : "-"}
           </DropDownIconContainer>

@@ -51,7 +51,7 @@ export const DropDownOptionsWrapper = styled.div`
   position: absolute;
   max-width: 10rem;
   width: 100%;
-  margin: 0rem auto 0rem;
+  margin: 0.125rem auto 0rem;
   border-radius: 0.125rem;
   font-size: 0.5rem;
   background: white;
@@ -88,7 +88,7 @@ export const DropDownIconContainer = styled.button`
   align-items: center;
   justify-content: center;
 
-  background: #ffebeb;
+  background: ${({ isOpen }) => (!isOpen ? "#ffebeb;" : "white;")};
   color: #c84349;
   max-height: 0.875rem;
   max-width: 0.875rem;
