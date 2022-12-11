@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { ReactComponent as MinusIcon } from "../assets/minus.svg";
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 import { ReactComponent as CloseIcon } from "../assets/x.svg";
+import TickIcon from "../assets/tick.svg";
 
 // STYLED COMPONENTS FOR MAIN PAGE
 
@@ -93,6 +94,7 @@ export const DropDownSelectButton = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: ${({ theme }) => theme.select_padding};
+  transition: color 1s, padding 1s;
   font-weight: 700;
   cursor: pointer;
   color: ${({ isOpen, theme }) => (isOpen ? theme.color3 : theme.color4)};
@@ -105,6 +107,7 @@ export const DropDownIconContainer = styled.button`
   align-items: center;
   justify-content: center;
   padding: 0.25rem;
+  transition: height 1s, width 1s;
 
   background: ${({ isOpen, theme }) => (isOpen ? theme.color2 : theme.color5)};
   height: ${({ theme }) => theme.icon_size};
@@ -137,11 +140,23 @@ export const DropDownOption = styled.li`
   padding: 0.25rem 0rem;
 `;
 
-export const DropDownCheckBox = styled.div`
-  background: ${({ checked, theme }) =>
-    checked ? theme.color5 : theme.color8};
-  border: ${({ checked, theme }) =>
-    checked ? theme.color5_border : theme.color8_border};
+export const DropDownCheckBox = styled.input`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0rem;
+  cursor: pointer;
+  background: ${({ theme }) => theme.color8};
+  border: ${({ theme }) => theme.color8_border};
+
+  &:checked {
+    background: ${({ theme }) => theme.color5};
+    border: ${({ theme }) => theme.color5_border};
+    background-image: url(${TickIcon});
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 
   display: flex;
   align-items: center;

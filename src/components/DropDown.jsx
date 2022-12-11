@@ -116,16 +116,13 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
                 >
                   {/* "checked" state must match key/value pair of the selectedItem state */}
                   <DropDownCheckBox
+                    type="checkbox"
+                    onChange={() => setSelectedItem(item)}
                     checked={
                       selectedItem?.name === item?.name &&
                       selectedItem?.key === item?.key
                     }
-                  >
-                    {selectedItem?.name === item?.name &&
-                    selectedItem?.key === item?.key
-                      ? "✓"
-                      : ""}
-                  </DropDownCheckBox>
+                  ></DropDownCheckBox>
                   <DropDownCheckBoxLabel
                     checked={
                       selectedItem?.name === item?.name &&

@@ -14,7 +14,7 @@ export const primaryDesign = {
   icon_size: "0.875rem",
   icon_specs: "0.25rem",
   select_padding: "0rem 0.625rem",
-  options_padding: "0.5rem 1rem",
+  options_padding: "0.25rem 0.5rem",
   select_width: "10rem",
 };
 
@@ -34,6 +34,6 @@ export const secondaryDesign = {
   icon_size: "1.5rem",
   icon_specs: "0.5rem",
   select_padding: "0.5rem 1rem",
-  options_padding: "1rem 1rem",
+  options_padding: "0.25rem 0.75rem",
   select_width: "15rem",
 };
