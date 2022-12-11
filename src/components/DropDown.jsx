@@ -8,6 +8,9 @@ import {
   DropDownIconContainer,
   DropDownCheckBox,
   DropDownCheckBoxLabel,
+  StyledCloseIcon,
+  StyledPlusIcon,
+  StyledMinusIcon,
 } from "../styles/UI";
 
 const DropDown = ({ options, selectedItem, setSelectedItem }) => {
@@ -49,10 +52,7 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
 
   return (
     <>
-      <DropDownContainer
-        ref={dropdownRef}
-        style={!isOpen ? { background: "white" } : { background: "#f0f0f0" }}
-      >
+      <DropDownContainer ref={dropdownRef} isOpen={isOpen}>
         <DropDownSelectButton
           id="select_btn"
           aria-haspopup="listbox"
@@ -68,7 +68,6 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
           </p>
           {/* in this case, rotate is only used to transform "+" to "x" in case selected item is not null */}
           <DropDownIconContainer
-            rotate={selectedItem !== null && !isOpen ? 1 : 0}
             id="icon_container"
             aria-hidden="true"
             onClick={() => {
@@ -78,7 +77,15 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
             }}
             isOpen={isOpen}
           >
-            {!isOpen ? "+" : "-"}
+            {!isOpen ? (
+              selectedItem !== null ? (
+                <StyledCloseIcon />
+              ) : (
+                <StyledPlusIcon />
+              )
+            ) : (
+              <StyledMinusIcon />
+            )}
           </DropDownIconContainer>
         </DropDownSelectButton>
         <DropDownOptionsWrapper

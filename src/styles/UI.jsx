@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { ReactComponent as MinusIcon } from "../assets/minus.svg";
+import { ReactComponent as PlusIcon } from "../assets/plus.svg";
+import { ReactComponent as CloseIcon } from "../assets/x.svg";
 
 // STYLED COMPONENTS FOR MAIN PAGE
 
@@ -11,13 +14,25 @@ export const Paragraph = styled.p`
   font-size: 0.625rem;
 `;
 
+export const Heading = styled.h1`
+  color: #494949;
+  font-size: 0.625rem;
+`;
+
+export const StyledBtn = styled.button`
+  min-width: 5rem;
+  background: #ffebeb;
+  border: 1px solid #c84349;
+  color: #c84349;
+`;
+
 export const Separator = styled.div`
   background: rgb(240, 240, 240);
   height: 0.094rem;
   margin: 1rem 4rem;
 `;
 
-export const MainPageSection = styled.div`
+export const MainPageSection = styled.section`
   margin-top: 2rem;
   background: white;
   padding: 1rem;
@@ -41,20 +56,22 @@ export const MainPageWrapper = styled.div`
 
 export const DropDownContainer = styled.div`
   position: relative;
-  max-width: 10rem;
+  max-width: ${({ theme }) => theme.select_width};
   margin: 1.5rem auto 0.125rem;
   border-radius: 0.125rem;
-  font-size: 0.5rem;
+  font-size: ${({ theme }) => theme.general_specs};
+  transition: max-width 1s, font-size 1s;
+  background: ${({ isOpen, theme }) => (isOpen ? theme.color1 : theme.color2)};
 `;
 
 export const DropDownOptionsWrapper = styled.div`
   position: absolute;
-  max-width: 10rem;
+  max-width: ${({ theme }) => theme.select_width};
   width: 100%;
   margin: 0.125rem auto 0rem;
   border-radius: 0.125rem;
-  font-size: 0.5rem;
-  background: white;
+  font-size: ${({ theme }) => theme.general_specs};
+  background: ${({ theme }) => theme.color2};
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
 
   animation: fadeIn 1s ease;
@@ -65,7 +82,6 @@ export const DropDownOptionsWrapper = styled.div`
       opacity: 0;
     }
     to {
-      background: white;
       opacity: 100%;
     }
   }
@@ -75,10 +91,10 @@ export const DropDownSelectButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0rem 0.625rem;
+  padding: ${({ theme }) => theme.select_padding};
   font-weight: 700;
   cursor: pointer;
-  color: ${({ isOpen }) => (isOpen ? "#494949;" : "#6a6a6a;")};
+  color: ${({ isOpen, theme }) => (isOpen ? theme.color3 : theme.color4)};
   max-height: 2rem;
 `;
 
@@ -87,25 +103,20 @@ export const DropDownIconContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.25rem;
 
-  background: ${({ isOpen }) => (!isOpen ? "#ffebeb;" : "white;")};
-  color: #c84349;
-  max-height: 0.875rem;
-  max-width: 0.875rem;
-  font-size: 0.75rem;
-  font-weight: 100;
+  background: ${({ isOpen, theme }) => (isOpen ? theme.color2 : theme.color5)};
+  height: ${({ theme }) => theme.icon_size};
+  width: ${({ theme }) => theme.icon_size};
+
   border: none;
   border-radius: 50%;
-
-  transition-duration: 0.1s;
-  transition-property: transform;
-  transform: ${({ rotate }) => (rotate ? "rotate(-45deg);" : "")};
 `;
 
 export const DropDownOptions = styled.ul`
   position: relative;
   margin: 0;
-  padding: 0.25rem 0.5rem;
+  padding: ${({ theme }) => theme.options_padding};
   border: 0.094rem solid rgb(240, 240, 240);
 `;
 
@@ -117,7 +128,7 @@ export const DropDownOption = styled.li`
 
   :hover {
     label {
-      color: #494949;
+      color: ${({ theme }) => theme.color3};
     }
   }
 
@@ -126,25 +137,54 @@ export const DropDownOption = styled.li`
 `;
 
 export const DropDownCheckBox = styled.div`
-  background: ${({ checked }) =>
-    checked ? "#ffebeb;" : "rgb(240, 240, 240);"};
-  border: ${({ checked }) =>
-    checked ? "1px solid #ffebeb;" : "1px solid rgb(240, 240, 240);"};
+  background: ${({ checked, theme }) =>
+    checked ? theme.color5 : theme.color8};
+  border: ${({ checked, theme }) =>
+    checked ? theme.color5_border : theme.color8_border};
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  height: 0.5rem;
-  width: 0.5rem;
-  margin-right: 0.5rem;
+  height: ${({ theme }) => theme.general_specs};
+  width: ${({ theme }) => theme.general_specs};
+  margin-right: ${({ theme }) => theme.general_specs};
+
   font-size: 0.625rem;
   font-weight: 700;
-  color: #c84349;
+  color: ${({ theme }) => theme.color6};
 `;
 
 export const DropDownCheckBoxLabel = styled.label`
-  color: ${({ checked }) => (checked ? "#494949;" : "#acacac;")};
+  color: ${({ checked, theme }) => (checked ? theme.color3 : theme.color7)};
   font-weight: 700;
   cursor: pointer;
+  height: ${({ theme }) => theme.height_label};
+`;
+
+// ICONS
+
+export const StyledMinusIcon = styled(MinusIcon)`
+  height: ${({ theme }) => theme.icon_specs};
+  width: ${({ theme }) => theme.icon_specs};
+
+  path {
+    fill: ${({ theme }) => theme.color6};
+  }
+`;
+export const StyledPlusIcon = styled(PlusIcon)`
+  height: ${({ theme }) => theme.icon_specs};
+  width: ${({ theme }) => theme.icon_specs};
+
+  path {
+    fill: ${({ theme }) => theme.color6};
+  }
+`;
+export const StyledCloseIcon = styled(CloseIcon)`
+  height: ${({ theme }) => theme.icon_specs};
+  width: ${({ theme }) => theme.icon_specs};
+
+  path {
+    fill: ${({ theme }) => theme.color6};
+  }
 `;
