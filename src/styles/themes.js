@@ -37,3 +37,43 @@ export const secondaryDesign = {
   options_padding: "0.25rem 0.75rem",
   select_width: "15rem",
 };
+
+export const tertiaryDesign = {
+  color1: "#0B4F6C",
+  color2: "#01BAEF",
+  color3: "#FBFBFF",
+  color4: "#c1f1ea",
+  color5: "#0B4F6C",
+  color5_border: "1px solid #0B4F6C",
+  color6: "#c1f1ea",
+  color7: "#FBFBFF80",
+  color8: "#FBFBFF",
+  color8_border: "1px solid #FBFBFF",
+  general_specs: "0.75rem",
+  height_label: "1.125rem",
+  icon_size: "1.5rem",
+  icon_specs: "0.5rem",
+  select_padding: "0.25rem 2rem",
+  options_padding: "0.25rem 1.75rem",
+  select_width: "17.5rem",
+};
+
+export const quaternaryDesign = {
+  color1: "#721817",
+  color2: "#0B6E4F",
+  color3: "#E0E0E2",
+  color4: "#e7bbba",
+  color5: "#721817",
+  color5_border: "1px solid #721817",
+  color6: "#e7bbba",
+  color7: "#E0E0E280",
+  color8: "#E0E0E2",
+  color8_border: "1px solid #E0E0E2",
+  general_specs: "0.875rem",
+  height_label: "1.125rem",
+  icon_size: "1.75rem",
+  icon_specs: "0.675rem",
+  select_padding: "1rem 1rem",
+  options_padding: "0.5rem 1rem",
+  select_width: "12.5rem",
+};

@@ -10,8 +10,14 @@ import {
   Paragraph,
   Heading,
   StyledBtn,
+  ButtonWrapper,
 } from "../styles/UI";
-import { primaryDesign, secondaryDesign } from "../styles/themes";
+import {
+  primaryDesign,
+  quaternaryDesign,
+  secondaryDesign,
+  tertiaryDesign,
+} from "../styles/themes";
 
 const MainPage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -23,6 +29,10 @@ const MainPage = () => {
         return primaryDesign;
       case "secondary":
         return secondaryDesign;
+      case "tertiary":
+        return tertiaryDesign;
+      case "quaternary":
+        return quaternaryDesign;
       default:
         return primaryDesign;
     }
@@ -45,23 +55,21 @@ const MainPage = () => {
           </Paragraph>
           <Separator />
           <Paragraph>
-            Result: {selectedItem?.name || "Not yet chosen"} {<br />}
+            Result: <b>{selectedItem?.name || "Not yet chosen"}</b> {<br />}
             You can also change the design based on your preferences:
           </Paragraph>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
+          <ButtonWrapper>
             <StyledBtn onClick={() => setDesign("primary")}>primary</StyledBtn>
             <StyledBtn onClick={() => setDesign("secondary")}>
               secondary
             </StyledBtn>
-          </div>
+            <StyledBtn onClick={() => setDesign("tertiary")}>
+              tertiary
+            </StyledBtn>
+            <StyledBtn onClick={() => setDesign("quaternary")}>
+              quaternary
+            </StyledBtn>
+          </ButtonWrapper>
         </MainPageSection>
       </MainPageWrapper>
     </ThemeProvider>

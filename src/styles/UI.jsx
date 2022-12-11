@@ -26,6 +26,19 @@ export const StyledBtn = styled.button`
   border: 1px solid #c84349;
   color: #c84349;
   cursor: pointer;
+
+  :hover {
+    background: white;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 `;
 
 export const Separator = styled.div`
