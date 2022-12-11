@@ -5,7 +5,8 @@ Consists of Main Page and DropDown component inside of it.
 As a framework (or library in this case), React.js was used (in JS).
 State management: Would be context, but since the app logic is fairly simple and DropDown component needs to be reusable: the state logic is inside of the parent component (MainPage).
 
-For styling purposes, Styled Components were used.
+For styling purposes, Styled Components were used in combination with Themes (they are used to demonstrate the easy transition from one design model to another).
+
 For testing purposes, testing-library/react was used (JEST tests).
 
 A fully working example is deployed and can be seen on the following link: https://cozy-eclair-02f39a.netlify.app/
