@@ -24,6 +24,7 @@ export const StyledBtn = styled.button`
   background: #ffebeb;
   border: 1px solid #c84349;
   color: #c84349;
+  cursor: pointer;
 `;
 
 export const Separator = styled.div`
