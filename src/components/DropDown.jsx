@@ -105,12 +105,12 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
                   key={key}
                   tabindex="-1"
                   aria-hidden={!isOpen}
-                  data-testid="dropdown_option"
                   data-option={String(item?.name)}
                 >
                   {/* "checked" state must match key/value pair of the selectedItem state */}
                   <DropDownCheckBox
                     type="checkbox"
+                    data-testid="dropdown_option"
                     id={"checkbox" + key}
                     name={"checkbox" + key}
                     onChange={() => {

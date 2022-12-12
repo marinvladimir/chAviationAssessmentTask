@@ -14,7 +14,7 @@ describe("dropdown component tests", () => {
     expect(btn).toBeInTheDocument();
   });
 
-  test("expects the dropdown to show in the component after button click and to hide after selecting the choice", async () => {
+  test("expects the dropdown to show in the component after button click ", async () => {
     const baseDom = render(
       <DropDown
         options={Item}
@@ -24,24 +24,6 @@ describe("dropdown component tests", () => {
     );
     fireEvent.click(await baseDom.findByTestId("button"));
     expect(baseDom.queryAllByTestId("dropdown_option")[0]).toBeTruthy();
-
-    fireEvent.click(await baseDom.queryAllByTestId("dropdown_option")[0]);
-    expect(baseDom.queryAllByTestId("dropdown_option")).toHaveLength(0);
-  });
-
-  test("expects the dropdown to show in the component after button click and to hide after selecting the choice", async () => {
-    const baseDom = render(
-      <DropDown
-        options={Item}
-        selectedItem={"null"}
-        setSelectedItem={() => {}}
-      />
-    );
-    fireEvent.click(await baseDom.findByTestId("button"));
-    expect(baseDom.queryAllByTestId("dropdown_option")[0]).toBeTruthy();
-
-    fireEvent.click(await baseDom.queryAllByTestId("dropdown_option")[0]);
-    expect(baseDom.queryAllByTestId("dropdown_option")).toHaveLength(0);
   });
 
   test("expects the dropdown to close after keydown ESCAPE", async () => {
