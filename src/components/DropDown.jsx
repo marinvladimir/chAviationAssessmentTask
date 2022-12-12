@@ -69,7 +69,6 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
           {/* in this case, rotate is only used to transform "+" to "x" in case selected item is not null */}
           <DropDownIconContainer
             id="icon_container"
-            aria-hidden="true"
             onClick={() => {
               if (selectedItem !== null && !isOpen) {
                 setSelectedItem(null);
@@ -79,12 +78,12 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
           >
             {!isOpen ? (
               selectedItem !== null ? (
-                <StyledCloseIcon />
+                <StyledCloseIcon aria-hidden="true" />
               ) : (
-                <StyledPlusIcon />
+                <StyledPlusIcon aria-hidden="true" />
               )
             ) : (
-              <StyledMinusIcon />
+              <StyledMinusIcon aria-hidden="true" />
             )}
           </DropDownIconContainer>
         </DropDownSelectButton>
@@ -108,22 +107,25 @@ const DropDown = ({ options, selectedItem, setSelectedItem }) => {
                   aria-hidden={!isOpen}
                   data-testid="dropdown_option"
                   data-option={String(item?.name)}
-                  checked={selectedItem?.name === item?.name}
-                  onClick={() => {
-                    setSelectedItem(item);
-                    setIsOpen(!isOpen);
-                  }}
                 >
                   {/* "checked" state must match key/value pair of the selectedItem state */}
                   <DropDownCheckBox
                     type="checkbox"
-                    onChange={() => setSelectedItem(item)}
+                    id={"checkbox" + key}
+                    name={"checkbox" + key}
+                    onChange={() => {
+                      if (selectedItem?.name !== item?.name)
+                        setSelectedItem(item);
+                      else setSelectedItem(null);
+                      //setIsOpen(!isOpen);
+                    }}
                     checked={
                       selectedItem?.name === item?.name &&
                       selectedItem?.key === item?.key
                     }
                   ></DropDownCheckBox>
                   <DropDownCheckBoxLabel
+                    htmlFor={"checkbox" + key}
                     checked={
                       selectedItem?.name === item?.name &&
                       selectedItem?.key === item?.key

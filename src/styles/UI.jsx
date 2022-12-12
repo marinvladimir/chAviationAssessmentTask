@@ -141,13 +141,6 @@ export const DropDownOption = styled.li`
   list-style: none;
   display: flex;
   align-items: center;
-  cursor: pointer;
-
-  :hover {
-    label {
-      color: ${({ theme }) => theme.color3};
-    }
-  }
 
   border-radius: 0.5rem;
   padding: 0.25rem 0rem;
@@ -185,6 +178,10 @@ export const DropDownCheckBox = styled.input`
 `;
 
 export const DropDownCheckBoxLabel = styled.label`
+  :hover {
+    color: ${({ theme }) => theme.color3};
+  }
+
   color: ${({ checked, theme }) => (checked ? theme.color3 : theme.color7)};
   font-weight: 700;
   cursor: pointer;
