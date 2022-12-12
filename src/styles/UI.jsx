@@ -119,7 +119,7 @@ export const DropDownIconContainer = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.25rem;
+  padding: 0;
   transition: height 1s, width 1s;
 
   background: ${({ isOpen, theme }) => (isOpen ? theme.color2 : theme.color5)};
@@ -191,24 +191,24 @@ export const DropDownCheckBoxLabel = styled.label`
 // ICONS
 
 export const StyledMinusIcon = styled(MinusIcon)`
-  height: ${({ theme }) => theme.icon_specs};
-  width: ${({ theme }) => theme.icon_specs};
+  height: ${({ theme }) => theme.icon_specs.other};
+  width: ${({ theme }) => theme.icon_specs.other};
 
   path {
     fill: ${({ theme }) => theme.color6};
   }
 `;
 export const StyledPlusIcon = styled(PlusIcon)`
-  height: ${({ theme }) => theme.icon_specs};
-  width: ${({ theme }) => theme.icon_specs};
+  height: ${({ theme }) => theme.icon_specs.other};
+  width: ${({ theme }) => theme.icon_specs.other};
 
   path {
     fill: ${({ theme }) => theme.color6};
   }
 `;
 export const StyledCloseIcon = styled(CloseIcon)`
-  height: ${({ theme }) => theme.icon_specs};
-  width: ${({ theme }) => theme.icon_specs};
+  height: ${({ theme }) => theme.icon_specs.close};
+  width: ${({ theme }) => theme.icon_specs.close};
 
   path {
     fill: ${({ theme }) => theme.color6};
