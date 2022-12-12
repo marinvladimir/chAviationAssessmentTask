@@ -9,7 +9,7 @@ For styling purposes, Styled Components were used in combination with Themes (th
 
 For testing purposes, testing-library/react was used (JEST tests).
 
-A fully working example is deployed and can be seen on the following link: https://sparkly-bunny-1e538d.netlify.app/
+A fully working example is deployed and can be seen on the following link: https://effervescent-faloodeh-dcd73b.netlify.app
 
 In the project directory, you can run:
 
